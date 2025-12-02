@@ -120,6 +120,55 @@
     .cert figcaption {margin-top: 10px; font-weight: 700; color: #e6dcff;}
     .cert .sub {color: var(--muted); font-size: .85rem; margin-top: 2px;}
 
+
+
+    /* --------- PROJECT CARDS --------- */
+    .project-card h3 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  color: #e6dcff;
+}
+
+.project-card .year {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.project-card .role {
+  margin: 0 0 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary-light);
+}
+
+.project-card p {
+  text-align: right;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.btn-project {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, #b19cd9, #d6b4fc);
+  color: #1a1629;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.25s;
+}
+
+.btn-project:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 14px rgba(209,166,255,0.45);
+}
+
+
+
     /* --------- CV --------- */
     #cv {text-align: center; padding: 50px 0;}
     .cv-img {
@@ -194,6 +243,7 @@
         <a href="#intro" class="primary">النبذة التعريفية</a>
         <a href="#certs">الشهادات</a>
         <a href="#cv">السيرة الذاتية</a>
+        <a href="#projects">المشاريع</a>
         <a href="#contact">للتواصل</a>
       </nav>
     </div>
@@ -203,7 +253,11 @@
     <section id="intro" class="container intro">
       <div class="avatar"></div>
       <h1>مرحبًا أنا هياء عجاب <span class="hand">👋</span></h1>
-      <h2>شغوفة بعلم البيانات والذكاء الاصطناعي، أؤمن بأن قوة البيانات قادرة على صناعة التغيير. هذه بداية رحلتي الرقمية، وسأضيف قريبًا تفاصيل أكثر عن مشاريعي وإنجازاتي في المجال.</h2>
+
+      <h2> شغوفة بعلم البيانات والذكاء الاصطناعي وأعمل على تطوير حلول تعتمد على تحليل البيانات والنماذج العميقة.
+        أؤمن بأن قوة البيانات قادرة على صنع تأثير حقيقي وأسعى لتطبيق مهاراتي عبر مشاريع عملية تعكس تطوري في هذا المجال.
+
+      </h2>
       <p class="muted"> هدفي الانضمام لفريق يقدم حلولًا قائمة على البيانات مع مواصلة تطوير مهاراتي التقنية والعملية ✨.</p>
     </section>
 
@@ -233,6 +287,81 @@
         </div>
       </div>
     </section>
+
+
+
+    <section id="projects" class="container">
+  <h2 class="title">المشاريع والتجربة العملية</h2>
+
+  <div class="grid cols-3">
+
+    <!-- Beyond the Stars -->
+    <div class="cert project-card">
+      <h3>Beyond the Stars <span class="year">(2025)</span></h3>
+      <p class="role">Data Science Bootcamp Final Project</p>
+      <p>
+        مشروع تخرج في معسكر علم البيانات يهدف إلى تحليل تجارب السياح في السعودية
+        من خلال أكثر من 17000 تقييم نصي، باستخدام تقنيات NLP مثل Topic Modeling (LDA)
+        و Sentiment Analysis بنموذج LSTM، مع لوحة تحكم تفاعلية مبنية بـ Streamlit
+        لدعم اتخاذ القرار في تطوير السياحة.
+      </p>
+      <p class="sub">
+        التقنيات: Python, Pandas, Streamlit, LDA, LSTM
+      </p>
+      <a class="btn-project"
+         href="https://beyondthestars-dec2nn2wt34nyh6vbyvfgu.streamlit.app/Recommendations"
+         target="_blank">
+        عرض المشروع
+      </a>
+    </div>
+
+    <!-- Interior Designers Directory -->
+    <div class="cert project-card">
+      <h3>Interior Designers Directory <span class="year">(2023)</span></h3>
+      <p class="role">Android App Development Bootcamp Graduation Project</p>
+      <p>
+        تطبيق جوّال يجمع مصممي الديكور الداخلي في منصة واحدة، يتيح استعراض الأعمال
+        والملفات التعريفية للمصممين، مع إمكانية البحث والتصفية حسب المدينة أو نوع
+        التصميم، وتوفير وسائل تواصل مباشرة مع المصمم.
+      </p>
+      <p class="sub">
+        التقنيات: Android Studio, Kotlin, XML, AndroidX
+      </p>
+    </div>
+
+    <!-- Library Management System -->
+    <div class="cert project-card">
+      <h3>Library Management System <span class="year">(2018)</span></h3>
+      <p class="role">Bachelor Graduation Project</p>
+      <p>
+        نظام مكتبي لإدارة مكتبة جامعة الخرمة، يشمل إدارة بيانات الكتب والتصنيفات
+        باستخدام نظام ديوي العشري، متابعة إعارة الكتب وحجوزاتها، وتوليد تقارير
+        لمساعدة أمين المكتبة في متابعة استخدام الموارد.
+      </p>
+      <p class="sub">
+        التقنيات: Python (PyCharm), PyQt4, SQLite, OOP, Multi-user login
+      </p>
+    </div>
+
+    <!-- Siamese Network Project -->
+    <div class="cert project-card">
+      <h3>Siamese Network — Face Matching <span class="year">(2025)</span></h3>
+      <p class="role">Deep Learning Project</p>
+      <p>
+        نموذج تعلم عميق يعتمد على Siamese Network لمقارنة زوج من صور الوجوه وتحديد
+        ما إذا كانت لشخص واحد أو لأشخاص مختلفين، وذلك من خلال استخراج تمثيل عددي
+        لكل صورة وحساب المسافة بينهما، مع استخدام Threshold لاتخاذ قرار المطابقة.
+      </p>
+      <p class="sub">
+        التقنيات: Python, PyTorch, CNN, Siamese Network, Contrastive Loss
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
 
     <section id="cv" class="container">
       <h2 class="title">السيرة الذاتية</h2>
