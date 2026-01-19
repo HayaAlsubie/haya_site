@@ -42,34 +42,40 @@
       max-width: var(--container);
       width: 100%;
       justify-content: center;
-      overflow-x: auto;            /* تمكين السحب في الجوال */
-      scrollbar-width: none;       /* إخفاء الشريط */
+      overflow-x: auto;
+      scrollbar-width: none;
       -ms-overflow-style: none;
     }
     .menu::-webkit-scrollbar { display: none; }
     .menu a {
       text-decoration: none;
       color: var(--text);
-      opacity: .9;
+      opacity: .95;
       padding: 10px 16px;
       border: 1px solid rgba(255,255,255,.12);
       border-radius: 999px;
       background: var(--surface);
       font-weight: 700;
       transition: .3s;
-      flex: 0 0 auto;              /* حتى لا تنضغط الأزرار عند السحب */
+      flex: 0 0 auto;
       scroll-snap-align: start;
+      white-space: nowrap;
     }
     .menu a:hover, .menu a.primary {
       background: linear-gradient(135deg, #b19cd9, #d6b4fc);
       color: #1a1629;
       border-color: transparent;
     }
+    .menu a.lang {
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,0.06);
+    }
 
     section {padding: 50px 0; text-align: center;}
     .title {margin: 0 0 14px; font-size: 1.3rem; color: var(--primary-light);}
     .muted {color: var(--muted);}
 
+    /* --------- INTRO --------- */
     .intro .avatar {
       width: 130px;
       height: 130px;
@@ -79,140 +85,117 @@
       box-shadow: 0 0 20px rgba(200,150,255,0.25);
       border: 2px solid rgba(255,255,255,0.2);
     }
-    .intro .hand {display: inline-block; font-size: 32px; animation: wave 2s ease-in-out infinite; transform-origin: 70% 70%; margin-right: 6px;}
-    @keyframes wave {
-      0% {transform: rotate(0deg);}
-      20% {transform: rotate(18deg);}
-      40% {transform: rotate(-12deg);}
-      60% {transform: rotate(14deg);}
-      80% {transform: rotate(-8deg);}
-      100% {transform: rotate(0deg);}
-    }
     .intro h1 {font-size: clamp(1.5rem,3vw,2.6rem); margin: 0; font-weight: 800; color: #e9e9ee;}
-    .intro h2 {font-size: clamp(1.1rem,2.4vw,1.6rem); margin: 10px 0 0; font-weight: 700; color: var(--primary-light);}
+    .intro h2 {font-size: clamp(1.05rem,2.2vw,1.5rem); margin: 10px auto 0; font-weight: 700; color: var(--primary-light); max-width: 920px; line-height: 1.9;}
 
-    /* --------- CERTS GRID --------- */
+    /* --------- GRID / CARDS --------- */
     .grid {display: grid; gap: 26px;}
-    /* تلقائيًا 1-3 أعمدة حسب العرض */
     .grid.cols-3 {grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));}
 
-    .cert {
+    .card {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,.1);
       border-radius: 14px;
-      padding: 12px;
+      padding: 14px;
       box-shadow: 0 8px 20px rgba(0,0,0,.25);
       transition: transform .3s ease, box-shadow .3s ease;
+      text-align: right;
     }
-    .cert:hover {transform: translateY(-4px); box-shadow: 0 0 22px rgba(209,166,255,0.45);}
+    .card:hover {transform: translateY(-4px); box-shadow: 0 0 22px rgba(209,166,255,0.35);}
+
+    /* --------- CERTS --------- */
     .cert figure {margin: 0;}
     .cert img {
       width: 100%;
       height: auto;
-      aspect-ratio: 4 / 3;         /* يمنع الأعمدة المظلمة ويعطي نسبة جميلة */
+      aspect-ratio: 4 / 3;
       object-fit: contain;
       background: #0e1220;
       border-radius: 10px;
       cursor: zoom-in;
       transition: transform .3s ease;
+      border: 1px solid rgba(255,255,255,.08);
     }
-    .cert img:hover {transform: scale(1.03);}
-    .cert figcaption {margin-top: 10px; font-weight: 700; color: #e6dcff;}
+    .cert img:hover {transform: scale(1.02);}
+    .cert figcaption {margin-top: 10px; font-weight: 800; color: #e6dcff;}
     .cert .sub {color: var(--muted); font-size: .85rem; margin-top: 2px;}
 
-
-
     /* --------- PROJECT CARDS --------- */
-    .project-card h3 {
-  margin: 0 0 4px;
-  font-size: 1.05rem;
-  color: #e6dcff;
-}
+    .project-card h3 {margin: 0 0 4px; font-size: 1.05rem; color: #e6dcff;}
+    .project-card .year {font-weight: 400; font-size: 0.9rem; color: var(--muted);}
+    .project-card .role {margin: 0 0 10px; font-weight: 700; font-size: 0.92rem; color: var(--primary-light);}
+    .project-card p {margin: 0 0 10px; font-size: 0.92rem; line-height: 1.75; color: #e7e7f2;}
+    .project-card .sub {margin-top: 8px; color: var(--muted); font-size: .88rem;}
 
-.project-card .year {
-  font-weight: 400;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-.project-card .role {
-  margin: 0 0 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--primary-light);
-}
-
-.project-card p {
-  text-align: right;
-  font-size: 0.9rem;
-  line-height: 1.7;
-}
-
-.btn-project {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 6px 14px;
-  font-size: 0.85rem;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  background: linear-gradient(135deg, #b19cd9, #d6b4fc);
-  color: #1a1629;
-  font-weight: 700;
-  text-decoration: none;
-  transition: 0.25s;
-}
-
-.btn-project:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 14px rgba(209,166,255,0.45);
-}
-
-
+    .btn-project {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 7px 14px;
+      font-size: 0.9rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, #b19cd9, #d6b4fc);
+      color: #1a1629;
+      font-weight: 800;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+    .btn-project:hover {transform: translateY(-2px); box-shadow: 0 0 14px rgba(209,166,255,0.35);}
 
     /* --------- CV --------- */
     #cv {text-align: center; padding: 50px 0;}
     .cv-img {
       width: 100%;
-      max-width: 800px;
+      max-width: 820px;
       display: block;
       margin: 0 auto 18px;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,.08);
       box-shadow: 0 6px 20px rgba(0,0,0,.35);
       background: #0e1220;
-      transition: .4s;
+      cursor: zoom-in;
+      transition: .35s;
     }
-    .cv-img:hover {transform: scale(1.02); box-shadow: 0 0 18px rgba(209,166,255,0.3);}
+    .cv-img:hover {transform: scale(1.01); box-shadow: 0 0 18px rgba(209,166,255,0.25);}
     .btn-download {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       margin: 0 auto;
-      padding: 8px 16px;
-      font-size: .9rem;
+      padding: 9px 16px;
+      font-size: .95rem;
       border-radius: 999px;
       border: 1px solid transparent;
       background: linear-gradient(135deg, #b19cd9, #d6b4fc);
       color: #1a1629;
-      font-weight: 700;
+      font-weight: 800;
       text-decoration: none;
       transition: .25s;
     }
-    .btn-download:hover {transform: translateY(-2px); box-shadow: 0 0 14px rgba(209,166,255,.45);}
+    .btn-download:hover {transform: translateY(-2px); box-shadow: 0 0 14px rgba(209,166,255,.35);}
 
-    #contact a {color: var(--primary-light); text-decoration: none; font-weight: 600;}
+    /* --------- CONTACT --------- */
+    #contact a {color: var(--primary-light); text-decoration: none; font-weight: 700;}
     #contact a:hover {text-decoration: underline;}
+    .contact-grid {
+      display: grid;
+      gap: 10px;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
     footer {padding: 28px 0; color: var(--muted); border-top: 1px solid rgba(255,255,255,.1);}
 
-    /* --------- MOBILE TWEAKS --------- */
+    /* --------- MOBILE --------- */
     @media (max-width: 768px) {
       .nav {justify-content: flex-start;}
       .menu {justify-content: flex-start; scroll-snap-type: x mandatory;}
       .menu a {padding: 9px 14px; font-size: .95rem;}
 
-      .grid.cols-3 {grid-template-columns: 1fr;} /* عمود واحد في الجوال */
-      .cert {width: 100%;}
-      .cert img {aspect-ratio: 16 / 11;}        /* نسبة أقرب لحجم الشهادات */
+      .grid.cols-3 {grid-template-columns: 1fr;}
+      .cert img {aspect-ratio: 16 / 11;}
     }
 
     /* --------- LIGHTBOX --------- */
@@ -231,6 +214,7 @@
     .lightbox .close {
       position: absolute; top: 16px; left: 16px;
       font-size: 28px; color: #fff; cursor: pointer; opacity: .85;
+      user-select: none;
     }
     .lightbox .close:hover {opacity: 1;}
   </style>
@@ -245,6 +229,7 @@
         <a href="#cv">السيرة الذاتية</a>
         <a href="#projects">المشاريع</a>
         <a href="#contact">للتواصل</a>
+        <a class="lang" href="index.html" title="English version">EN</a>
       </nav>
     </div>
   </header>
@@ -252,129 +237,117 @@
   <main>
     <section id="intro" class="container intro">
       <div class="avatar"></div>
-      <h1>مرحبًا أنا هياء عجاب <span class="hand">👋</span></h1>
+      <h1>مرحبًا، أنا هياء عجاب</h1>
 
-      <h2> شغوفة بعلم البيانات والذكاء الاصطناعي وأعمل على تطوير حلول تعتمد على تحليل البيانات والنماذج العميقة
-       أؤمن بأن قوة البيانات قادرة على صنع تأثير حقيقي وأسعى لتطبيق مهاراتي عبر مشاريع عملية تعكس تطوري في هذا المجال.
-
+      <h2>
+        مطورة خلفية وقواعد بيانات، أعمل على حلول نظم ERP وأضيف ميزات ذكاء اصطناعي عملية لتحسين تجربة المستخدم ورفع الكفاءة.
       </h2>
-      <p class="muted"> هدفي الانضمام لفريق يقدم حلولًا قائمة على البيانات مع مواصلة تطوير مهاراتي التقنية والعملية ✨.</p>
+
+      <p class="muted" style="max-width: 920px; margin: 12px auto 0; line-height: 1.9;">
+        أعمل حاليًا عبر شركة مساندة على مشروع ERP: تطوير قواعد البيانات، تكامل واجهات برمجية، وميزات ذكاء اصطناعي تساعد على تسهيل العمليات.
+      </p>
     </section>
 
     <section id="certs" class="container">
       <h2 class="title">الشهادات</h2>
       <div class="grid cols-3">
-        <div class="cert">
+        <div class="card cert">
           <figure>
             <img data-base="assets/certs/lewagon" alt="Le Wagon Certificate">
             <figcaption>علم البيانات — Le Wagon</figcaption>
             <div class="sub">شهادة احترافية بالتعاون مع الأكاديمية الرقمية — 2025</div>
           </figure>
         </div>
-        <div class="cert">
+        <div class="card cert">
           <figure>
             <img data-base="assets/certs/AI_week" alt="AI Week Certificate">
             <figcaption>أسبوع الذكاء الاصطناعي</figcaption>
-            <div class="sub">NetSeed × SDA — أسبوع مكثّف — 2025</div>
+            <div class="sub">NetSeed × SDA — 2025</div>
           </figure>
         </div>
-        <div class="cert">
+        <div class="card cert">
           <figure>
             <img data-base="assets/certs/SDA" alt="SDA Certificate">
-            <figcaption>معسكر علم البيانات والذكاء الاصطناعي لمدة ٣ أشهر</figcaption>
+            <figcaption>معسكر علم البيانات والذكاء الاصطناعي</figcaption>
             <div class="sub">SDA × Le Wagon — 2025</div>
           </figure>
         </div>
       </div>
     </section>
 
-
-
     <section id="projects" class="container">
-  <h2 class="title">المشاريع والتجربة العملية</h2>
+      <h2 class="title">المشاريع</h2>
 
-  <div class="grid cols-3">
+      <div class="grid cols-3">
 
-    <!-- Beyond the Stars -->
-    <div class="cert project-card">
-      <h3>Beyond the Stars <span class="year">(2025)</span></h3>
-      <p class="role">Data Science Bootcamp Final Project</p>
-      <p>
-        مشروع تخرج في معسكر علم البيانات يهدف إلى تحليل تجارب السياح في السعودية
-        من خلال أكثر من 17000 تقييم نصي، باستخدام تقنيات NLP مثل Topic Modeling (LDA)
-        و Sentiment Analysis بنموذج LSTM، مع لوحة تحكم تفاعلية مبنية بـ Streamlit
-        لدعم اتخاذ القرار في تطوير السياحة.
-      </p>
-      <p class="sub">
-        التقنيات: Python, Pandas, Streamlit, LDA, LSTM
-      </p>
-      <a class="btn-project"
-         href="https://beyondthestars-dec2nn2wt34nyh6vbyvfgu.streamlit.app/Recommendations"
-         target="_blank">
-        عرض المشروع
-      </a>
-    </div>
+        <div class="card project-card">
+          <h3>Muʿid <span class="year">(2025)</span></h3>
+          <p class="role">منصة قدرات مدعومة بالذكاء الاصطناعي (مشروع تخرج — أكاديمية طويق)</p>
+          <p>
+            منصة تعليمية تساعد طلاب الثانوية على الاستعداد لاختبار القدرات من خلال فهم الأسئلة والتدرّب عليها باللغة العربية.
+            تعتمد على نهج الاسترجاع المعزز بالمعلومات (RAG) وتوليد الشرح والإجابات بناءً على بيانات تاريخية موثوقة تمتد لأكثر من 12 سنة.
+          </p>
+          <p class="sub">التقنيات: Python, FastAPI, LLMs, RAG, OCR, Databases</p>
+        </div>
 
-    <!-- Interior Designers Directory -->
-    <div class="cert project-card">
-      <h3>Interior Designers Directory <span class="year">(2023)</span></h3>
-      <p class="role">Android App Development Bootcamp Graduation Project</p>
-      <p>
-        تطبيق جوّال يجمع مصممي الديكور الداخلي في منصة واحدة، يتيح استعراض الأعمال
-        والملفات التعريفية للمصممين، مع إمكانية البحث والتصفية حسب المدينة أو نوع
-        التصميم، وتوفير وسائل تواصل مباشرة مع المصمم.
-      </p>
-      <p class="sub">
-        التقنيات: Android Studio, Kotlin, XML, AndroidX
-      </p>
-    </div>
+        <div class="card project-card">
+          <h3>Beyond the Stars <span class="year">(2025)</span></h3>
+          <p class="role">مشروع تخرج — معسكر علم البيانات (SDA & Le Wagon)</p>
+          <p>
+            تحليل أكثر من 17000 تقييم سياحي باستخدام تقنيات معالجة اللغة الطبيعية مثل نمذجة المواضيع (LDA) وتحليل المشاعر (LSTM)،
+            مع لوحة تحكم تفاعلية مبنية بـ Streamlit لدعم القرارات.
+          </p>
+          <p class="sub">التقنيات: Python, Pandas, Streamlit, LDA, LSTM</p>
+          <a class="btn-project"
+             href="https://beyondthestars-dec2nn2wt34nyh6vbyvfgu.streamlit.app/Recommendations"
+             target="_blank" rel="noopener">
+            عرض المشروع
+          </a>
+        </div>
 
-    <!-- Library Management System -->
-    <div class="cert project-card">
-      <h3>Library Management System <span class="year">(2018)</span></h3>
-      <p class="role">Bachelor Graduation Project</p>
-      <p>
-        نظام مكتبي لإدارة مكتبة جامعة الخرمة، يشمل إدارة بيانات الكتب والتصنيفات
-        باستخدام نظام ديوي العشري، متابعة إعارة الكتب وحجوزاتها، وتوليد تقارير
-        لمساعدة أمين المكتبة في متابعة استخدام الموارد.
-      </p>
-      <p class="sub">
-        التقنيات: Python (PyCharm), PyQt4, SQLite, OOP, Multi-user login
-      </p>
-    </div>
+        <div class="card project-card">
+          <h3>Interior Designers Directory <span class="year">(2023)</span></h3>
+          <p class="role">مشروع تخرج — معسكر تطوير تطبيقات أندرويد</p>
+          <p>
+            تطبيق يجمع مصممي الديكور في منصة واحدة مع استعراض الأعمال ووسائل تواصل مباشرة.
+          </p>
+          <p class="sub">التقنيات: Android Studio, Kotlin, XML, AndroidX</p>
+        </div>
 
-    <!-- Siamese Network Project -->
-    <div class="cert project-card">
-      <h3>Siamese Network — Face Matching <span class="year">(2025)</span></h3>
-      <p class="role">Deep Learning Project</p>
-      <p>
-        نموذج تعلم عميق يعتمد على Siamese Network لمقارنة زوج من صور الوجوه وتحديد
-        ما إذا كانت لشخص واحد أو لأشخاص مختلفين، وذلك من خلال استخراج تمثيل عددي
-        لكل صورة وحساب المسافة بينهما، مع استخدام Threshold لاتخاذ قرار المطابقة.
-      </p>
-      <p class="sub">
-        التقنيات: Python, PyTorch, CNN, Siamese Network, Contrastive Loss
-      </p>
-    </div>
+        <div class="card project-card">
+          <h3>Library Management System <span class="year">(2018)</span></h3>
+          <p class="role">مشروع تخرج — بكالوريوس علوم الحاسب</p>
+          <p>
+            نظام مكتبي لإدارة مكتبة جامعة الخرمة يشمل تصنيف الكتب وإعارتها وحجوزاتها وتوليد تقارير.
+          </p>
+          <p class="sub">التقنيات: Python (PyCharm), PyQt, SQLite, OOP, Multi-user login</p>
+        </div>
 
-  </div>
-</section>
+        <div class="card project-card">
+          <h3>Siamese Network — Face Matching <span class="year">(2025)</span></h3>
+          <p class="role">مشروع تعلم عميق</p>
+          <p>
+            نموذج يعتمد على Siamese Network لمقارنة صور الوجوه وتحديد التطابق باستخدام تمثيل عددي ومسافة وعتبة قرار.
+          </p>
+          <p class="sub">التقنيات: Python, PyTorch, CNN, Siamese Network, Contrastive Loss</p>
+        </div>
 
-
-
+      </div>
+    </section>
 
     <section id="cv" class="container">
       <h2 class="title">السيرة الذاتية</h2>
       <img class="cv-img" data-base="assets/cv/haya_cv" alt="CV">
-      <a class="btn-download" href="assets/cv/haya_cv.pdf" download>⬇️ تنزيل السيرة الذاتية (PDF)</a>
+      <a class="btn-download" href="assets/cv/haya_cv.pdf" download>تنزيل السيرة الذاتية (PDF)</a>
     </section>
 
     <section id="contact" class="container">
       <h2 class="title">للتواصل</h2>
-      <div class="contact">
-        <div><a href="https://www.linkedin.com/in/haya-ajab/" target="_blank">🔗 linkedin.com/in/haya-ajab</a></div>
-        <div><a href="tel:+966546974154">📞 0546974154</a></div>
-        <div><a href="mailto:hayaajab1@gmail.com">✉️ hayaajab1@gmail.com</a></div>
+      <div class="contact-grid">
+        <div><a href="https://www.linkedin.com/in/haya-ajab/" target="_blank" rel="noopener">linkedin.com/in/haya-ajab</a></div>
+        <div><a href="tel:+966546974154">0546974154</a></div>
+        <div><a href="mailto:hayaajab1@gmail.com">hayaajab1@gmail.com</a></div>
+        <div>الرياض، المملكة العربية السعودية</div>
       </div>
     </section>
   </main>
@@ -387,7 +360,7 @@
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
-    <span class="close" id="lbClose">✕</span>
+    <span class="close" id="lbClose">x</span>
     <img id="lbImg" alt="عرض مكبر">
   </div>
 
@@ -399,33 +372,46 @@
     document.querySelectorAll('img[data-base]').forEach(img => {
       const exts = ['.jpg', '.jpeg', '.png', '.webp'];
       let i = 0;
+
       const tryNext = () => {
         if (i >= exts.length) return;
         const url = img.getAttribute('data-base') + exts[i++];
         const test = new Image();
-        test.onload = () => img.src = url;
+        test.onload = () => { img.src = url; };
         test.onerror = tryNext;
         test.src = url;
       };
+
       tryNext();
     });
 
-    // Lightbox للتكبير
+    // Lightbox (works even when src is set later)
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const lbClose = document.getElementById('lbClose');
 
-    document.querySelectorAll('#certs .cert img').forEach(img => {
-      img.addEventListener('click', () => {
-        if (!img.src) return;
-        lbImg.src = img.src;
-        lightbox.classList.add('active');
-      });
+    document.addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (!img) return;
+
+      const isCert = img.closest('.cert') !== null;
+      const isCv = img.classList.contains('cv-img');
+      if (!isCert && !isCv) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      lbImg.src = src;
+      lightbox.classList.add('active');
     });
 
     lbClose.addEventListener('click', () => lightbox.classList.remove('active'));
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('active'); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('active'); });
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+    });
   </script>
 </body>
 </html>
