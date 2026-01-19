@@ -166,6 +166,7 @@
       border: 1px solid rgba(255,255,255,.08);
       box-shadow: 0 6px 20px rgba(0,0,0,.35);
       background: #0e1220;
+      cursor: zoom-in;
       transition: .35s;
     }
     .cv-img:hover { transform: scale(1.01); box-shadow: 0 0 18px rgba(209,166,255,0.25); }
@@ -258,8 +259,11 @@
       <h2>Backend & Database Developer | ERP Systems | AI Integration</h2>
 
       <p class="lead">
-        Computer Science graduate with practical experience in ERP systems and database development.
-        I build reliable, data-driven business solutions with a focus on clean backend architecture, SQL performance, and meaningful AI features that improve the user experience.
+        Backend & database developer focused on ERP systems—building reliable SQL-driven workflows and practical AI assistants.
+      </p>
+
+      <p class="muted" style="max-width: 900px; margin: 10px auto 0; line-height: 1.9;">
+        Currently working with Mosanada Business Services on an ERP project: database development, API integration, and AI features that improve usability and efficiency.
       </p>
     </section>
 
@@ -272,16 +276,13 @@
           <h3>Database Programmer (Tamheer Program) <span class="year">(Dec 2025 – Present)</span></h3>
           <p class="role">MERP Systems — via Mosanada Business Services | Riyadh, Saudi Arabia</p>
 
-          <p>
-            Contributing to ERP modules by developing and maintaining relational databases, improving data accuracy,
-            and supporting system integration across business workflows.
-          </p>
+          <ul class="muted" style="margin: 10px 0 0; padding-left: 18px; line-height: 1.9;">
+            <li>Develop and maintain relational databases with a focus on data accuracy and query performance.</li>
+            <li>Support ERP workflows through backend logic and API integration across modules.</li>
+            <li>Collaborate on AI assistant/chatbot features to streamline operations and improve user experience.</li>
+          </ul>
 
-          <p>
-            Also collaborating on adding AI capabilities (assistant/chatbot features) to enhance usability and streamline operations.
-          </p>
-
-          <p class="sub">
+          <p class="sub" style="margin-top: 10px;">
             Technologies: SQL, Database Design, ERP Systems, API Integration, AI Assistants
           </p>
         </div>
@@ -305,19 +306,10 @@
             built on verified historical exam data spanning over 12 years.
           </p>
 
-          <p>
-            Key features include Arabic language support, student performance tracking, clear explanations for quantitative and verbal questions,
-            and an interactive practice experience designed to reduce anxiety and improve readiness.
-          </p>
-
           <p class="sub">
             Technologies: Python, FastAPI, LLMs, RAG, OCR, Databases
           </p>
         </div>
-
-
-          <!-- Optional: Add links later -->
-          <!-- <a class="btn-project" href="#" target="_blank" rel="noopener">View Project</a> -->
 
         <!-- Beyond the Stars -->
         <div class="card project-card">
@@ -325,7 +317,7 @@
           <p class="role">Data Science Bootcamp Final Project (SDA & Le Wagon)</p>
           <p>
             Analyzed over 17,000 tourist reviews using NLP techniques including topic modeling (LDA) and sentiment analysis (LSTM).
-            Built an interactive dashboard with Streamlit to support tourism development aligned with Vision 2030.
+            Built an interactive Streamlit dashboard to support tourism development aligned with Vision 2030.
           </p>
           <p class="sub">Technologies: Python, Pandas, Streamlit, LDA, LSTM</p>
           <a class="btn-project" href="https://beyondthestars-dec2nn2wt34nyh6vbyvfgu.streamlit.app/Recommendations" target="_blank" rel="noopener">View Project</a>
@@ -336,8 +328,8 @@
           <h3>Interior Designers Directory <span class="year">(2023)</span></h3>
           <p class="role">Android App Development Bootcamp Graduation Project</p>
           <p>
-            Developed a mobile application that aggregates interior designers in one platform, showcasing portfolios
-            and enabling direct contact with designers.
+            Developed a mobile app that aggregates interior designers in one platform, showcases portfolios,
+            and enables direct contact with designers.
           </p>
           <p class="sub">Technologies: Android Studio, Kotlin, XML, AndroidX</p>
         </div>
@@ -441,7 +433,7 @@
         if (i >= exts.length) return;
         const url = img.getAttribute('data-base') + exts[i++];
         const test = new Image();
-        test.onload = () => img.src = url;
+        test.onload = () => { img.src = url; };
         test.onerror = tryNext;
         test.src = url;
       };
@@ -449,24 +441,34 @@
       tryNext();
     });
 
-    // Lightbox (for certificates + Mu'id poster)
+    // Lightbox (works even when src is set later)
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const lbClose = document.getElementById('lbClose');
 
-    document.querySelectorAll('img').forEach(img => {
-      if (!img.src) return;
+    document.addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (!img) return;
 
-      img.addEventListener('click', () => {
-        if (!img.src) return;
-        lbImg.src = img.src;
-        lightbox.classList.add('active');
-      });
+      // Only open for cert images and CV preview
+      const isCert = img.closest('.cert') !== null;
+      const isCv = img.classList.contains('cv-img');
+      if (!isCert && !isCv) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      lbImg.src = src;
+      lightbox.classList.add('active');
     });
 
     lbClose.addEventListener('click', () => lightbox.classList.remove('active'));
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('active'); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('active'); });
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+    });
   </script>
 </body>
 </html>
