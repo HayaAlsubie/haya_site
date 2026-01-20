@@ -232,6 +232,21 @@
       user-select: none;
     }
     .lightbox .close:hover { opacity: 1; }
+
+    .btn-primary {
+  background: var(--primary);
+  color: #111;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+
+
+
   </style>
 </head>
 
@@ -391,10 +406,17 @@
 
     <!-- CV -->
     <section id="cv" class="container">
-      <h2 class="title">Curriculum Vitae</h2>
-      <img class="cv-img" data-base="assets/cv/haya_cv" alt="CV">
-      <a class="btn-download" href="assets/cv/haya_cv.pdf" download>Download CV (PDF)</a>
+      <h2 class="title">Resume</h2>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+        <a class="btn-primary" href="assets/cv/haya_cv.pdf" target="_blank" rel="noopener">
+          View Resume
+        </a>
+        <a class="btn-outline" href="assets/cv/haya_cv.pdf" download>
+          Download PDF
+        </a>
+      </div>
     </section>
+
 
     <!-- CONTACT -->
     <section id="contact" class="container">
