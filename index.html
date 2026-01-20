@@ -28,18 +28,7 @@
 
   <main>
 
-    <section id="moed3d" class="container">
-      <h2 class="title">3D Preview</h2>
-
-      <div class="card">
-        <div id="moed-viewer" class="viewer" aria-label="3D model viewer">
-          <div class="viewer-loading">Loading 3D model…</div>
-        </div>
-
-        <p class="muted viewer-hint">Drag to rotate • Scroll to zoom</p>
-      </div>
-    </section>
-
+    
     <!-- INTRO -->
 
     <section id="intro" class="container intro">
@@ -251,107 +240,5 @@
       if (e.key === 'Escape') lightbox.classList.remove('active');
     });
   </script>
-
-<script type="module">
-  import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
-  import { OrbitControls } from "https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js";
-  import { FBXLoader } from "https://unpkg.com/three@0.160.0/examples/jsm/loaders/FBXLoader.js";
-
-  const container = document.getElementById("moed-viewer");
-
-  // Basic scene
-  const scene = new THREE.Scene();
-  scene.background = null;
-
-  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 2000);
-  camera.position.set(0, 120, 260);
-
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  container.appendChild(renderer.domElement);
-
-  // Lights
-  scene.add(new THREE.AmbientLight(0xffffff, 0.75));
-
-  const dirLight = new THREE.DirectionalLight(0xffffff, 0.9);
-  dirLight.position.set(150, 250, 120);
-  scene.add(dirLight);
-
-  const fillLight = new THREE.DirectionalLight(0xffffff, 0.45);
-  fillLight.position.set(-180, 120, -120);
-  scene.add(fillLight);
-
-  // Controls
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.06;
-  controls.enablePan = false;
-
-  // Resize
-  function resize() {
-    const w = container.clientWidth;
-    const h = container.clientHeight;
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-    renderer.setSize(w, h, false);
-  }
-  window.addEventListener("resize", resize);
-
-  // Load FBX
-  const loader = new FBXLoader();
-  const fbxPath = "assets/3D/Moedanimation.fbx"; // IMPORTANT: matches your folder
-
-  let mixer = null;
-  const clock = new THREE.Clock();
-
-  loader.load(
-    fbxPath,
-    (obj) => {
-      // Remove loading text
-      const loading = container.querySelector(".viewer-loading");
-      if (loading) loading.remove();
-
-      // Scale & center
-      obj.scale.setScalar(0.22);
-
-      // Center model
-      const box = new THREE.Box3().setFromObject(obj);
-      const center = box.getCenter(new THREE.Vector3());
-      obj.position.sub(center);
-
-      scene.add(obj);
-
-      // Animation (if exists)
-      if (obj.animations && obj.animations.length > 0) {
-        mixer = new THREE.AnimationMixer(obj);
-        const action = mixer.clipAction(obj.animations[0]);
-        action.play();
-      }
-
-      resize();
-    },
-    undefined,
-    (err) => {
-      console.error("FBX load error:", err);
-      const loading = container.querySelector(".viewer-loading");
-      if (loading) loading.textContent = "Failed to load 3D model.";
-    }
-  );
-
-  // Render loop
-  function animate() {
-    requestAnimationFrame(animate);
-    const dt = clock.getDelta();
-    if (mixer) mixer.update(dt);
-    controls.update();
-    renderer.render(scene, camera);
-  }
-  resize();
-  animate();
-</script>
-
-
-
-
 </body>
 </html>
