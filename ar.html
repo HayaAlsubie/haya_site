@@ -9,215 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg-gradient: linear-gradient(135deg, #1b1534 0%, #2c3140 100%);
-      --surface: rgba(242, 236, 236, 0.05);
-      --text: #edecee;
-      --muted: #cbd5e1;
-      --primary: #b19cd9;
-      --primary-light: #d6b4fc;
-      --radius: 16px;
-      --shadow: 0 10px 25px rgba(0,0,0,.35);
-      --container: 1100px;
-    }
-    * {box-sizing: border-box;}
-    html, body {height: 100%;}
-    body {
-      margin: 0;
-      background: var(--bg-gradient);
-      color: var(--text);
-      font-family: "Cairo", sans-serif;
-      scroll-behavior: smooth;
-    }
-    .container {width: min(100% - 32px, var(--container)); margin-inline: auto;}
-
-    /* --------- NAV --------- */
-    header {position: sticky; top: 0; z-index: 50; background: rgba(20,20,30,.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.1);}
-    .nav {height: 64px; display: flex; align-items: center; justify-content: center;}
-    .menu {
-      display: flex;
-      gap: 10px;
-      padding: 8px 6px;
-      max-width: var(--container);
-      width: 100%;
-      justify-content: center;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    .menu::-webkit-scrollbar { display: none; }
-    .menu a {
-      text-decoration: none;
-      color: var(--text);
-      opacity: .95;
-      padding: 10px 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 999px;
-      background: var(--surface);
-      font-weight: 700;
-      transition: .3s;
-      flex: 0 0 auto;
-      scroll-snap-align: start;
-      white-space: nowrap;
-    }
-    .menu a:hover, .menu a.primary {
-      background: linear-gradient(135deg, #b19cd9, #d6b4fc);
-      color: #1a1629;
-      border-color: transparent;
-    }
-    .menu a.lang {
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,0.06);
-    }
-
-    section {padding: 50px 0; text-align: center;}
-    .title {margin: 0 0 14px; font-size: 1.3rem; color: var(--primary-light);}
-    .muted {color: var(--muted);}
-
-    /* --------- INTRO --------- */
-    .intro .avatar {
-      width: 130px;
-      height: 130px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      background: url('assets/avatar.png') center/cover no-repeat;
-      box-shadow: 0 0 20px rgba(200,150,255,0.25);
-      border: 2px solid rgba(255,255,255,0.2);
-    }
-    .intro h1 {font-size: clamp(1.5rem,3vw,2.6rem); margin: 0; font-weight: 800; color: #e9e9ee;}
-    .intro h2 {font-size: clamp(1.05rem,2.2vw,1.5rem); margin: 10px auto 0; font-weight: 700; color: var(--primary-light); max-width: 920px; line-height: 1.9;}
-
-    /* --------- GRID / CARDS --------- */
-    .grid {display: grid; gap: 26px;}
-    .grid.cols-3 {grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));}
-
-    .card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 14px;
-      padding: 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.25);
-      transition: transform .3s ease, box-shadow .3s ease;
-      text-align: right;
-    }
-    .card:hover {transform: translateY(-4px); box-shadow: 0 0 22px rgba(209,166,255,0.35);}
-
-    /* --------- CERTS --------- */
-    .cert figure {margin: 0;}
-    .cert img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 4 / 3;
-      object-fit: contain;
-      background: #0e1220;
-      border-radius: 10px;
-      cursor: zoom-in;
-      transition: transform .3s ease;
-      border: 1px solid rgba(255,255,255,.08);
-    }
-    .cert img:hover {transform: scale(1.02);}
-    .cert figcaption {margin-top: 10px; font-weight: 800; color: #e6dcff;}
-    .cert .sub {color: var(--muted); font-size: .85rem; margin-top: 2px;}
-
-    /* --------- PROJECT CARDS --------- */
-    .project-card h3 {margin: 0 0 4px; font-size: 1.05rem; color: #e6dcff;}
-    .project-card .year {font-weight: 400; font-size: 0.9rem; color: var(--muted);}
-    .project-card .role {margin: 0 0 10px; font-weight: 700; font-size: 0.92rem; color: var(--primary-light);}
-    .project-card p {margin: 0 0 10px; font-size: 0.92rem; line-height: 1.75; color: #e7e7f2;}
-    .project-card .sub {margin-top: 8px; color: var(--muted); font-size: .88rem;}
-
-    .btn-project {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 7px 14px;
-      font-size: 0.9rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      background: linear-gradient(135deg, #b19cd9, #d6b4fc);
-      color: #1a1629;
-      font-weight: 800;
-      text-decoration: none;
-      transition: 0.25s;
-    }
-    .btn-project:hover {transform: translateY(-2px); box-shadow: 0 0 14px rgba(209,166,255,0.35);}
-
-    /* --------- CV --------- */
-    #cv {text-align: center; padding: 50px 0;}
-    .cv-img {
-      width: 100%;
-      max-width: 820px;
-      display: block;
-      margin: 0 auto 18px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 6px 20px rgba(0,0,0,.35);
-      background: #0e1220;
-      cursor: zoom-in;
-      transition: .35s;
-    }
-    .cv-img:hover {transform: scale(1.01); box-shadow: 0 0 18px rgba(209,166,255,0.25);}
-    .btn-download {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 auto;
-      padding: 9px 16px;
-      font-size: .95rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      background: linear-gradient(135deg, #b19cd9, #d6b4fc);
-      color: #1a1629;
-      font-weight: 800;
-      text-decoration: none;
-      transition: .25s;
-    }
-    .btn-download:hover {transform: translateY(-2px); box-shadow: 0 0 14px rgba(209,166,255,.35);}
-
-    /* --------- CONTACT --------- */
-    #contact a {color: var(--primary-light); text-decoration: none; font-weight: 700;}
-    #contact a:hover {text-decoration: underline;}
-    .contact-grid {
-      display: grid;
-      gap: 10px;
-      justify-content: center;
-      text-align: center;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    footer {padding: 28px 0; color: var(--muted); border-top: 1px solid rgba(255,255,255,.1);}
-
-    /* --------- MOBILE --------- */
-    @media (max-width: 768px) {
-      .nav {justify-content: flex-start;}
-      .menu {justify-content: flex-start; scroll-snap-type: x mandatory;}
-      .menu a {padding: 9px 14px; font-size: .95rem;}
-
-      .grid.cols-3 {grid-template-columns: 1fr;}
-      .cert img {aspect-ratio: 16 / 11;}
-    }
-
-    /* --------- LIGHTBOX --------- */
-    .lightbox {
-      position: fixed; inset: 0;
-      display: none; align-items: center; justify-content: center;
-      background: rgba(0,0,0,.85); z-index: 1000;
-    }
-    .lightbox.active {display: flex;}
-    .lightbox img {
-      max-width: 92vw; max-height: 92vh;
-      border-radius: 12px; box-shadow: 0 0 24px rgba(255,255,255,.25);
-      animation: zoom .2s ease-out;
-    }
-    @keyframes zoom {from {transform: scale(.9); opacity: .6;} to {transform: scale(1); opacity: 1;}}
-    .lightbox .close {
-      position: absolute; top: 16px; left: 16px;
-      font-size: 28px; color: #fff; cursor: pointer; opacity: .85;
-      user-select: none;
-    }
-    .lightbox .close:hover {opacity: 1;}
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -225,9 +17,9 @@
     <div class="container nav">
       <nav class="menu">
         <a href="#intro" class="primary">النبذة التعريفية</a>
+        <a href="#projects">المشاريع</a>
         <a href="#certs">الشهادات</a>
         <a href="#cv">السيرة الذاتية</a>
-        <a href="#projects">المشاريع</a>
         <a href="#contact">للتواصل</a>
         <a class="lang" href="index.html" title="English version">EN</a>
       </nav>
@@ -235,66 +27,46 @@
   </header>
 
   <main>
-    <<section id="intro" class="container intro">
+    <!-- INTRO -->
+    <section id="intro" class="container intro">
       <div class="avatar"></div>
-      <h1>مرحبًا، أنا هياء عجاب</h1>
 
-      <h2>
-        متخصصة في تطوير الأنظمة الخلفية وقواعد البيانات، أعمل على بناء حلول نظم ERP
-        وأضيف مزايا ذكاء اصطناعي عملية تعزز تجربة المستخدم وترفع كفاءة الأنظمة.
-      </h2>
+      <h1>
+        مرحبًا، أنا هياء عجاب
+        <span class="wave" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img" aria-label="waving icon">
+            <path d="M22 33c-2 0-4-2-4-4V16c0-2 2-4 4-4s4 2 4 4v13c0 2-2 4-4 4Z"/>
+            <path d="M30 35c-2 0-4-2-4-4V12c0-2 2-4 4-4s4 2 4 4v19c0 2-2 4-4 4Z"/>
+            <path d="M38 36c-2 0-4-2-4-4V14c0-2 2-4 4-4s4 2 4 4v18c0 2-2 4-4 4Z"/>
+            <path d="M46 38c-2 0-4-2-4-4V18c0-2 2-4 4-4s4 2 4 4v16c0 2-2 4-4 4Z"/>
+            <path d="M18 33c0 0 0 10 2 14 3 6 8 9 14 9 10 0 16-7 16-17v-7c0-2 2-4 4-4s4 2 4 4v7c0 16-10 25-24 25-9 0-17-5-21-14-2-5-3-17-3-17h8Z"/>
+          </svg>
+        </span>
+      </h1>
 
-      <p class="muted" style="max-width: 920px; margin: 12px auto 0; line-height: 1.9;">
-        أعمل حاليًا على مشروع نظام ERP بالتعاون مع شركة مساندة للأعمال،
-        حيث أساهم في تطوير قواعد البيانات، تكامل واجهات البرمجة،
-        وتطبيق حلول ذكية تساعد على تسهيل العمليات وتحسين الأداء.
+      <h2>مطورة أنظمة خلفية وقواعد بيانات | نظم ERP | دمج الذكاء الاصطناعي</h2>
+
+      <p class="lead">
+        أركز على بناء قواعد بيانات فعّالة وواجهات برمجية واضحة لأنظمة ERP، مع إضافة مزايا ذكية عملية.
+      </p>
+
+      <p class="muted intro-sub">
+        أعمل حاليًا عبر شركة مساندة للأعمال على مشروع ERP: تطوير قواعد البيانات، تكامل واجهات البرمجة، وميزات ذكاء اصطناعي تُحسن الكفاءة وتجربة المستخدم.
       </p>
     </section>
 
-    <section id="certs" class="container">
-      <h2 class="title">الشهادات</h2>
-      <div class="grid cols-3">
-        <div class="card cert">
-          <figure>
-            <img data-base="assets/certs/lewagon" alt="Le Wagon Certificate">
-            <figcaption>علم البيانات — Le Wagon</figcaption>
-            <div class="sub">شهادة احترافية بالتعاون مع الأكاديمية الرقمية — 2025</div>
-          </figure>
-        </div>
-        <div class="card cert">
-          <figure>
-            <img data-base="assets/certs/AI_week" alt="AI Week Certificate">
-            <figcaption>أسبوع الذكاء الاصطناعي</figcaption>
-            <div class="sub">NetSeed × SDA — 2025</div>
-          </figure>
-        </div>
-        <div class="card cert">
-          <figure>
-            <img data-base="assets/certs/SDA" alt="SDA Certificate">
-            <figcaption>معسكر علم البيانات والذكاء الاصطناعي</figcaption>
-            <div class="sub">SDA × Le Wagon — 2025</div>
-          </figure>
-        </div>
-        <div class="card cert">
-          <img data-base="assets/certs/android_tuwaiq" alt="شهادة معسكر تطوير تطبيقات أندرويد">
-          <h3>معسكر تطوير تطبيقات أندرويد</h3>
-          <p class="muted">أكاديمية طويق — 2023</p>
-        </div>
-      </div>
-
-    </section>
-
+    <!-- PROJECTS -->
     <section id="projects" class="container">
       <h2 class="title">المشاريع</h2>
 
       <div class="grid cols-3">
 
         <div class="card project-card">
-          <h3> مُعِد <span class="year">(2025)</span></h3>
-          <p class="role">منصة إختبار قدرات مدعومة بالذكاء الاصطناعي (مشروع تخرج — أكاديمية طويق)</p>
+          <h3>مُعِد <span class="year">(2025)</span></h3>
+          <p class="role">منصة الاستعداد لاختبار القدرات بالذكاء الاصطناعي (مشروع تخرج — أكاديمية طويق)</p>
           <p>
-            منصة تعليمية تساعد طلاب الثانوية على الاستعداد لاختبار القدرات من خلال فهم الأسئلة والتدرّب عليها باللغة العربية.
-            تعتمد على نهج الاسترجاع المعزز بالمعلومات (RAG) وتوليد الشرح والإجابات بناءً على بيانات تاريخية موثوقة تمتد لأكثر من 12 سنة.
+            منصة تعليمية تساعد طلاب الثانوية على فهم أسئلة القدرات والتدرّب عليها باللغة العربية، باستخدام نهج الاسترجاع المعزز بالمعلومات (RAG)
+            اعتمادًا على بيانات تاريخية موثوقة تمتد لأكثر من 12 سنة.
           </p>
           <p class="sub">التقنيات: Python, FastAPI, LLMs, RAG, OCR, Databases</p>
         </div>
@@ -303,8 +75,7 @@
           <h3>Beyond the Stars <span class="year">(2025)</span></h3>
           <p class="role">مشروع تخرج — معسكر علم البيانات (SDA & Le Wagon)</p>
           <p>
-            تحليل أكثر من 17000 تقييم سياحي باستخدام تقنيات معالجة اللغة الطبيعية مثل نمذجة المواضيع (LDA) وتحليل المشاعر (LSTM)،
-            مع لوحة تحكم تفاعلية مبنية بـ Streamlit لدعم القرارات.
+            تحليل أكثر من 17000 تقييم سياحي باستخدام (LDA) و(LSTM)، وبناء لوحة تحكم تفاعلية بـ Streamlit لدعم القرارات.
           </p>
           <p class="sub">التقنيات: Python, Pandas, Streamlit, LDA, LSTM</p>
           <a class="btn-project"
@@ -317,41 +88,76 @@
         <div class="card project-card">
           <h3>Interior Designers Directory <span class="year">(2023)</span></h3>
           <p class="role">مشروع تخرج — معسكر تطوير تطبيقات أندرويد</p>
-          <p>
-            تطبيق يجمع مصممي الديكور في منصة واحدة مع استعراض الأعمال ووسائل تواصل مباشرة.
-          </p>
+          <p>تطبيق يجمع مصممي الديكور في منصة واحدة مع استعراض الأعمال ووسائل تواصل مباشرة.</p>
           <p class="sub">التقنيات: Android Studio, Kotlin, XML, AndroidX</p>
         </div>
 
         <div class="card project-card">
           <h3>Library Management System <span class="year">(2018)</span></h3>
           <p class="role">مشروع تخرج — بكالوريوس علوم الحاسب</p>
-          <p>
-            نظام مكتبي لإدارة مكتبة جامعة الخرمة يشمل تصنيف الكتب وإعارتها وحجوزاتها وتوليد تقارير.
-          </p>
+          <p>نظام مكتبي لإدارة مكتبة جامعة الخرمة مع تصنيف الكتب والحجوزات والتقارير.</p>
           <p class="sub">التقنيات: Python (PyCharm), PyQt, SQLite, OOP, Multi-user login</p>
         </div>
 
         <div class="card project-card">
           <h3>Siamese Network — Face Matching <span class="year">(2025)</span></h3>
           <p class="role">مشروع تعلم عميق</p>
-          <p>
-            نموذج يعتمد على Siamese Network لمقارنة صور الوجوه وتحديد التطابق باستخدام تمثيل عددي ومسافة وعتبة قرار.
-          </p>
+          <p>نموذج Siamese Network لمقارنة صور الوجوه وتحديد التطابق باستخدام embeddings ومسافة وعتبة قرار.</p>
           <p class="sub">التقنيات: Python, PyTorch, CNN, Siamese Network, Contrastive Loss</p>
         </div>
 
       </div>
     </section>
 
+    <!-- CERTS -->
+    <section id="certs" class="container">
+      <h2 class="title">الشهادات</h2>
+
+      <div class="grid cols-3">
+        <div class="card cert">
+          <figure>
+            <img data-base="assets/certs/lewagon" alt="شهادة Le Wagon">
+            <figcaption>علم البيانات — Le Wagon</figcaption>
+            <div class="sub">شهادة احترافية بالتعاون مع الأكاديمية الرقمية — 2025</div>
+          </figure>
+        </div>
+
+        <div class="card cert">
+          <figure>
+            <img data-base="assets/certs/AI_week" alt="شهادة أسبوع الذكاء الاصطناعي">
+            <figcaption>أسبوع الذكاء الاصطناعي</figcaption>
+            <div class="sub">NetSeed × SDA — 2025</div>
+          </figure>
+        </div>
+
+        <div class="card cert">
+          <figure>
+            <img data-base="assets/certs/SDA" alt="شهادة معسكر علم البيانات والذكاء الاصطناعي">
+            <figcaption>معسكر علم البيانات والذكاء الاصطناعي</figcaption>
+            <div class="sub">SDA × Le Wagon — 2025</div>
+          </figure>
+        </div>
+
+        <div class="card cert">
+          <figure>
+            <img data-base="assets/certs/android_tuwaiq" alt="شهادة معسكر تطوير تطبيقات أندرويد">
+            <figcaption>معسكر تطوير تطبيقات أندرويد</figcaption>
+            <div class="sub">أكاديمية طويق — 2023</div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV -->
     <section id="cv" class="container">
       <h2 class="title">السيرة الذاتية</h2>
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <div class="btn-row">
         <a class="btn-download" href="assets/cv/haya_cv.pdf" target="_blank" rel="noopener">عرض السيرة الذاتية (PDF)</a>
         <a class="btn-download" href="assets/cv/haya_cv.pdf" download>تنزيل السيرة الذاتية (PDF)</a>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="container">
       <h2 class="title">للتواصل</h2>
       <div class="contact-grid">
@@ -396,7 +202,7 @@
       tryNext();
     });
 
-    // Lightbox (works even when src is set later)
+    // Lightbox
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const lbClose = document.getElementById('lbClose');
