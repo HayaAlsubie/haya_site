@@ -10,6 +10,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Three.js for 3D Viewer -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -58,8 +68,6 @@
         and AI assistant features that improve usability and efficiency.
       </p>
     </section>
-
-
 
     <!-- PROJECTS -->
     <section id="projects" class="container">
@@ -168,15 +176,24 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="container">
-      <h2 class="title">Contact</h2>
-      <div class="contact-grid">
-        <div><a href="https://www.linkedin.com/in/haya-ajab/" target="_blank" rel="noopener">linkedin.com/in/haya-ajab</a></div>
-        <div><a href="tel:+966546974154">+966 54 697 4154</a></div>
-        <div><a href="mailto:hayaajab1@gmail.com">hayaajab1@gmail.com</a></div>
-        <div>Riyadh, Saudi Arabia</div>
-      </div>
-    </section>
+<section id="contact" class="container">
+  <h2 class="title">Contact</h2>
+
+  <div class="contact-wrapper">
+    <div class="contact-grid">
+      <div><a href="https://www.linkedin.com/in/haya-ajab/" target="_blank" rel="noopener">linkedin.com/in/haya-ajab</a></div>
+      <div><a href="tel:+966546974154">+966 54 697 4154</a></div>
+      <div><a href="mailto:hayaajab1@gmail.com">hayaajab1@gmail.com</a></div>
+      <div>Riyadh, Saudi Arabia</div>
+    </div>
+
+    <!-- 3D VIEWER - Under contact -->
+    <div class="viewer viewer-bottom" id="viewer3d">
+      <div class="viewer-loading">Loading 3D model...</div>
+    </div>
+  </div>
+</section>
+
   </main>
 
   <footer>
@@ -239,6 +256,254 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') lightbox.classList.remove('active');
     });
+  </script>
+
+  <!-- 3D Viewer Script -->
+  <script type="module">
+    // 3D Viewer - Load as module
+    (async function init3DViewer() {
+      const viewer = document.getElementById('viewer3d');
+      if (!viewer) return;
+
+      try {
+        const THREE = await import('three');
+        const { FBXLoader } = await import('three/addons/loaders/FBXLoader.js');
+        const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
+
+        // Scene setup
+        const scene = new THREE.Scene();
+        scene.background = null;
+
+        const camera = new THREE.PerspectiveCamera(
+          50,
+          viewer.clientWidth / viewer.clientHeight,
+          0.1,
+          1000
+        );
+        camera.position.set(0, 5, 15);
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        viewer.innerHTML = '';
+        viewer.appendChild(renderer.domElement);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight1.position.set(5, 10, 5);
+        scene.add(directionalLight1);
+
+        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+        directionalLight2.position.set(-5, 5, -5);
+        scene.add(directionalLight2);
+
+        // Controls
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.minDistance = 5;
+        controls.maxDistance = 30;
+
+        let mixer = null;
+        const clock = new THREE.Clock();
+
+        // Load FBX model
+        const loader = new FBXLoader();
+        loader.load(
+          'assets/3D/Moedanimation.fbx',
+          (fbx) => {
+            // Center and scale the model
+            fbx.traverse((child) => {
+              if (child.isMesh) {
+                child.castShadow = true;
+                child.receiveShadow = true;
+              }
+            });
+
+            // Calculate bounding box to center the model
+            const box = new THREE.Box3().setFromObject(fbx);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const scale = 5 / maxDim;
+            fbx.scale.multiplyScalar(scale);
+            fbx.position.sub(center.multiplyScalar(scale));
+
+            // Create a group for auto-rotation
+            let modelGroup = new THREE.Group();
+            modelGroup.add(fbx);
+            scene.add(modelGroup);
+
+            // Setup animation mixer if animations exist
+            if (fbx.animations && fbx.animations.length > 0) {
+              mixer = new THREE.AnimationMixer(fbx);
+              
+              // Play all animations with loop
+              fbx.animations.forEach((clip) => {
+                const action = mixer.clipAction(clip);
+                action.setLoop(THREE.LoopRepeat); // Repeat animation infinitely
+                action.clampWhenFinished = false; // Don't stop at end
+                action.play();
+              });
+              
+              console.log(`Playing ${fbx.animations.length} animation(s)`);
+            } else {
+              console.log('No animations found in model');
+            }
+
+            // Auto-rotate the model
+            let autoRotateSpeed = 0.005;
+
+            // Find eyes and add blinking animation
+            let eyes = [];
+            fbx.traverse((child) => {
+              if (child.isMesh) {
+                const name = child.name.toLowerCase();
+                // Search for eyes by name
+                if (name.includes('eye') || name.includes('عين') || 
+                    name.includes('eyeball') || name.includes('pupil')) {
+                  eyes.push(child);
+                }
+                // Also check material name
+                if (child.material && child.material.name) {
+                  const matName = child.material.name.toLowerCase();
+                  if (matName.includes('eye') || matName.includes('عين')) {
+                    if (!eyes.includes(child)) eyes.push(child);
+                  }
+                }
+              }
+            });
+
+            // If no eyes found, try to find small meshes that might be eyes
+            if (eyes.length === 0) {
+              const allMeshes = [];
+              fbx.traverse((child) => {
+                if (child.isMesh) allMeshes.push(child);
+              });
+              
+              // Find smallest meshes (likely eyes)
+              allMeshes.sort((a, b) => {
+                const boxA = new THREE.Box3().setFromObject(a);
+                const boxB = new THREE.Box3().setFromObject(b);
+                const sizeA = boxA.getSize(new THREE.Vector3());
+                const sizeB = boxB.getSize(new THREE.Vector3());
+                const volumeA = sizeA.x * sizeA.y * sizeA.z;
+                const volumeB = sizeB.x * sizeB.y * sizeB.z;
+                return volumeA - volumeB;
+              });
+              
+              // Take the 2 smallest meshes as potential eyes
+              if (allMeshes.length >= 2) {
+                eyes = allMeshes.slice(0, 2);
+              }
+            }
+
+            console.log(`Found ${eyes.length} eye(s) for blinking animation`);
+
+            // Eye blinking animation
+            let eyeBlinkTime = 0;
+            let eyeBlinkInterval = 2 + Math.random() * 2; // Random interval between 2-4 seconds
+            let isBlinking = false;
+
+            // Auto zoom (camera distance animation)
+            let zoomTime = 0;
+            let baseDistance = 15;
+            let zoomRange = 3; // Zoom in/out range
+            let zoomSpeed = 0.5; // Speed of zoom animation
+
+            // Animation loop
+            const animate = () => {
+              requestAnimationFrame(animate);
+              const delta = clock.getDelta();
+              
+              // Update animations if mixer exists
+              if (mixer) {
+                mixer.update(delta);
+              }
+              
+              // Auto-rotate the model
+              modelGroup.rotation.y += autoRotateSpeed;
+              
+              // Eye blinking animation
+              eyeBlinkTime += delta;
+              if (eyeBlinkTime >= eyeBlinkInterval) {
+                if (!isBlinking) {
+                  // Start blinking
+                  isBlinking = true;
+                  eyes.forEach(eye => {
+                    if (eye.scale) {
+                      eye.userData.originalScale = eye.scale.y;
+                    }
+                  });
+                } else if (eyeBlinkTime >= eyeBlinkInterval + 0.15) {
+                  // End blinking
+                  isBlinking = false;
+                  eyeBlinkTime = 0;
+                  eyeBlinkInterval = 2 + Math.random() * 2; // New random interval
+                }
+              }
+
+              // Apply eye blink
+              if (isBlinking) {
+                const blinkProgress = Math.min((eyeBlinkTime - eyeBlinkInterval) / 0.15, 1);
+                const blinkScale = blinkProgress < 0.5 
+                  ? 1 - (blinkProgress * 2) * 0.9  // Close
+                  : (blinkProgress - 0.5) * 2;      // Open
+                
+                eyes.forEach(eye => {
+                  if (eye.scale && eye.userData.originalScale !== undefined) {
+                    eye.scale.y = eye.userData.originalScale * blinkScale;
+                  }
+                });
+              }
+
+              // Auto zoom animation
+              zoomTime += delta * zoomSpeed;
+              const zoomOffset = Math.sin(zoomTime) * zoomRange;
+              const targetDistance = baseDistance + zoomOffset;
+              
+              // Smoothly move camera
+              const currentDistance = camera.position.distanceTo(new THREE.Vector3(0, 0, 0));
+              const newDistance = THREE.MathUtils.lerp(currentDistance, targetDistance, 0.05);
+              
+              const direction = camera.position.clone().normalize();
+              camera.position.copy(direction.multiplyScalar(newDistance));
+              
+              controls.update();
+              renderer.render(scene, camera);
+            };
+            animate();
+
+            // Handle window resize
+            const handleResize = () => {
+              camera.aspect = viewer.clientWidth / viewer.clientHeight;
+              camera.updateProjectionMatrix();
+              renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+            };
+            window.addEventListener('resize', handleResize);
+          },
+          (progress) => {
+            if (progress.lengthComputable) {
+              const percent = (progress.loaded / progress.total * 100).toFixed(0);
+              const loadingEl = viewer.querySelector('.viewer-loading');
+              if (loadingEl) {
+                loadingEl.textContent = `Loading 3D model... ${percent}%`;
+              }
+            }
+          },
+          (error) => {
+            console.error('Error loading 3D model:', error);
+            viewer.innerHTML = '<div class="viewer-loading">Error loading 3D model. Please try again later.</div>';
+          }
+        );
+      } catch (error) {
+        console.error('Error initializing 3D viewer:', error);
+        viewer.innerHTML = '<div class="viewer-loading">3D viewer not available. Please check your browser compatibility.</div>';
+      }
+    })();
   </script>
 </body>
 </html>

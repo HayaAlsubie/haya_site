@@ -91,9 +91,13 @@ section {
 }
 
 .title {
-  margin: 0 0 14px;
+  margin: 0 0 4px;
   font-size: 1.3rem;
   color: var(--primary-light);
+}
+
+#contact .title {
+  margin-bottom: 2px;
 }
 
 .muted { color: var(--muted); }
@@ -107,6 +111,10 @@ section {
   background: url("assets/avatar.png") center/cover no-repeat;
   box-shadow: 0 0 20px rgba(200,150,255,0.25);
   border: 2px solid rgba(255,255,255,0.2);
+}
+
+.viewer-wrapper {
+  position: relative;
 }
 
 .intro h1 {
@@ -255,22 +263,44 @@ html[dir="rtl"] .card { text-align: right; }
   transform: translateY(-2px);
   box-shadow: 0 0 14px rgba(209,166,255,.35);
 }
-
 /* --------- CONTACT --------- */
 #contact a {
-  color: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
   text-decoration: none;
-  font-weight: 700;
 }
-#contact a:hover { text-decoration: underline; }
+
+#contact a:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+
+.contact-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* توسيط كامل */
+  gap: 24px;
+  margin-top: 12px;
+  width: 100%;
+}
 
 .contact-grid {
   display: grid;
   gap: 10px;
-  justify-content: center;
   text-align: center;
   color: var(--muted);
   font-weight: 600;
+}
+
+/* 3D Viewer */
+.viewer-bottom {
+  width: 320px;
+  height: 320px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
 }
 
 /* --------- FOOTER --------- */
@@ -345,6 +375,28 @@ html[dir="rtl"] .lightbox .close { right: auto; left: 16px; }
   box-shadow: 0 18px 60px rgba(0,0,0,0.35);
 }
 
+.viewer-small {
+  height: 280px !important;
+  width: 100%;
+}
+
+.viewer-bottom-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+html[dir="rtl"] .viewer-bottom-wrapper {
+  justify-content: flex-start;
+}
+
+.viewer-bottom {
+  height: 400px !important;
+  width: 400px;
+  max-width: 100%;
+}
+
 .viewer canvas {
   width: 100% !important;
   height: 100% !important;
@@ -370,4 +422,8 @@ html[dir="rtl"] .lightbox .close { right: auto; left: 16px; }
 /* Responsive */
 @media (max-width: 768px) {
   .viewer { height: 420px; }
+  .viewer-bottom { 
+    height: 300px !important;
+    width: 100% !important;
+  }
 }
