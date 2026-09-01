@@ -1,0 +1,5 @@
+*.pdf
+*.Pdf
+*.PDF
+_cert_preview/
+_verify_shots/

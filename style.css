@@ -491,6 +491,62 @@ html[dir="rtl"] .card { text-align: right; }
 }
 
 /* --------- PROJECTS --------- */
+/* --------- EXPERIENCE / EDUCATION --------- */
+.experience-list,
+.education-list {
+  display: grid;
+  gap: 20px;
+  max-width: 860px;
+  margin: 28px auto 0;
+}
+
+.experience-card h3,
+.education-card h3 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  color: #e6dcff;
+}
+
+.experience-card .date,
+.education-card .date {
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--primary-light);
+}
+
+.experience-card p,
+.education-card p {
+  margin: 0 0 10px;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: #f1effa;
+}
+
+.experience-card p:last-child,
+.education-card p:last-child {
+  margin-bottom: 0;
+}
+
+.experience-card ul {
+  margin: 0;
+  padding-inline-start: 1.2em;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+
+.experience-card li { margin-bottom: 4px; }
+.experience-card li:last-child { margin-bottom: 0; }
+
+.experience-card.current {
+  border: 1px solid rgba(200, 168, 255, 0.35);
+  box-shadow: 0 22px 55px rgba(200, 168, 255, 0.22);
+  background: linear-gradient(160deg, rgba(30, 28, 66, 0.95), rgba(48, 42, 84, 0.8));
+}
+
+.education-card { padding: 16px 20px; }
+
 .project-card h3 { margin: 0 0 4px; font-size: 1.05rem; color: #e6dcff; }
 .project-card .year { font-weight: 400; font-size: 0.9rem; color: var(--muted); }
 .project-card .role { margin: 0 0 10px; font-weight: 700; font-size: 0.92rem; color: var(--primary-light); }

@@ -1,4 +1,4 @@
-# Haya Ajab Alsubaie — Personal Portfolio
+# Haya Alsubaie — Personal Portfolio
 
 A bilingual personal portfolio showcasing my background, projects, certifications, and professional journey.
 
