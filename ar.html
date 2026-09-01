@@ -1,537 +1,297 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>هياء عجاب — صفحة شخصية</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>هياء عجاب السبيعي | مهندسة برمجيات</title>
+  <meta name="description" content="هياء عجاب السبيعي مهندسة برمجيات في الرياض، تعمل على أنظمة ERP وأنظمة الأعمال، ولديها خلفية في قواعد البيانات وعلم البيانات والذكاء الاصطناعي.">
+  <meta name="theme-color" content="#171326">
+  <link rel="canonical" href="https://hayaalsubie.github.io/haya_site/ar.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="هياء عجاب السبيعي | مهندسة برمجيات">
+  <meta property="og:description" content="أنظمة ERP وأنظمة الأعمال، تطوير البرمجيات، وخلفية في البيانات والذكاء الاصطناعي.">
+  <meta property="og:url" content="https://hayaalsubie.github.io/haya_site/ar.html">
+  <meta property="og:image" content="https://hayaalsubie.github.io/haya_site/assets/avatar.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="style.css">
-
-  <!-- Three.js for 3D Viewer -->
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-      }
-    }
-  </script>
 </head>
 
 <body>
-  <div class="bg-stack" aria-hidden="true">
-    <div class="bg-layer bg-base"></div>
-    <div class="bg-layer bg-stars"></div>
-    <div class="bg-layer bg-glow"></div>
-    <div class="bg-layer bg-waves"></div>
-    <div class="bg-layer bg-circuit"></div>
-    <div class="bg-layer bg-grid"></div>
-    <div class="bg-layer bg-rings"></div>
-  </div>
-  <header>
-    <div class="container nav">
-      <nav class="menu">
-        <div class="menu-links">
-          <a href="#intro" class="primary">النبذة التعريفية</a>
-          <a href="#projects">المشاريع</a>
-          <a href="#certs">الشهادات</a>
-          <a href="#cv">السيرة الذاتية</a>
-          <a href="#contact">للتواصل</a>
-        </div>
-        <div class="menu-lang">
-          <a class="lang" href="index.html" title="English version">English</a>
-        </div>
+  <a class="skip-link" href="#main-content">تجاوز إلى المحتوى</a>
+
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="#top" aria-label="الصفحة الرئيسية لهياء السبيعي">هـ</a>
+      <nav class="site-nav" aria-label="التنقل الرئيسي">
+        <a href="#about">نبذة</a>
+        <a href="#experience">الخبرة</a>
+        <a href="#work">الأعمال</a>
+        <a href="#skills">المهارات</a>
+        <a href="#contact">التواصل</a>
       </nav>
+      <a class="language-link" href="index.html" lang="en">English</a>
     </div>
   </header>
 
-  <main>
-
-
-    <!-- INTRO -->
-    <section id="intro" class="container intro">
-      <div class="hero">
-        <div class="hero-content">
-          <div class="avatar"></div>
-
-          <h1>
-            مرحبًا، أنا هياء عجاب
-            <span class="wave" aria-hidden="true">
-              <svg viewBox="0 0 64 64" role="img" aria-label="waving icon">
-                <path d="M22 33c-2 0-4-2-4-4V16c0-2 2-4 4-4s4 2 4 4v13c0 2-2 4-4 4Z"/>
-                <path d="M30 35c-2 0-4-2-4-4V12c0-2 2-4 4-4s4 2 4 4v19c0 2-2 4-4 4Z"/>
-                <path d="M38 36c-2 0-4-2-4-4V14c0-2 2-4 4-4s4 2 4 4v18c0 2-2 4-4 4Z"/>
-                <path d="M46 38c-2 0-4-2-4-4V18c0-2 2-4 4-4s4 2 4 4v16c0 2-2 4-4 4Z"/>
-                <path d="M18 33c0 0 0 10 2 14 3 6 8 9 14 9 10 0 16-7 16-17v-7c0-2 2-4 4-4s4 2 4 4v7c0 16-10 25-24 25-9 0-17-5-21-14-2-5-3-17-3-17h8Z"/>
-              </svg>
-            </span>
-          </h1>
-
-          <h2>Data Analyst | Junior Data Scientist | ERP Systems</h2>
-
-          <p class="lead">
-            مهتمة بتحليل البيانات واستخلاص الرؤى التي تدعم اتخاذ القرار. أعمل حاليًا على نظام ERP، حيث أشارك في تطوير
-            الجزء الخلفي للنظام والتعامل مع قواعد البيانات، مع التوجّه لاحقًا لدمج تقنيات الذكاء الاصطناعي ضمن النظام.
+  <main id="main-content">
+    <section class="hero-section" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">مهندسة برمجيات · الرياض، السعودية</p>
+          <h1>هياء عجاب السبيعي</h1>
+          <p class="role-line">أنظمة <bdi>ERP</bdi> وأنظمة الأعمال <span aria-hidden="true">·</span> خلفية في البيانات والذكاء الاصطناعي</p>
+          <p class="hero-lead">
+            أعمل على تطوير وتحسين أنظمة الأعمال من خلال الربط بين التنفيذ البرمجي، ومتطلبات النظام، والبيانات، والجودة. تشمل خبرتي العملية وحدات <bdi>ERP</bdi>، والواجهات المرتبطة بالـ<bdi>API</bdi>، والمتطلبات التقنية، والاختبارات، ومراجعة جاهزية الأنظمة.
           </p>
 
-        </div>
+          <div class="hero-actions" aria-label="خيارات التواصل السريع">
+            <a class="button button-primary" href="#experience">عرض الخبرة</a>
+            <a class="button button-secondary" href="assets/cv/haya_cv.pdf" target="_blank" rel="noopener">عرض السيرة</a>
+          </div>
 
-        <div class="hero-visual">
-          <div class="viewer viewer-hero" id="viewer3d">
-            <div class="viewer-loading">جاري تحميل النموذج ثلاثي الأبعاد...</div>
+          <div class="contact-links" aria-label="الحسابات المهنية">
+            <a href="https://www.linkedin.com/in/haya-ajab/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/HayaAlsubie" target="_blank" rel="noopener">GitHub</a>
+            <a href="mailto:hayaajab1@gmail.com">البريد الإلكتروني</a>
           </div>
         </div>
+
+        <figure class="hero-photo">
+          <img src="assets/avatar.png" alt="هياء السبيعي أثناء تقديم موضوع تقني" width="1414" height="1392" fetchpriority="high">
+          <figcaption>هندسة البرمجيات، وفهم الأنظمة، والتواصل التقني الواضح.</figcaption>
+        </figure>
       </div>
     </section>
 
-
-
-
-    <!-- PROJECTS -->
-    <section id="projects" class="container">
-      <h2 class="title">المشاريع</h2>
-
-      <div class="grid cols-3">
-
-        <div class="card project-card featured">
-          <h3>مُعِد <span class="year">(2025)</span></h3>
-          <p class="role">منصة الاستعداد لاختبار القدرات بالذكاء الاصطناعي (مشروع تخرج — أكاديمية طويق)</p>
-          <p>
-            منصة تعليمية تساعد طلاب الثانوية على فهم أسئلة القدرات والتدرّب عليها باللغة العربية، باستخدام نهج الاسترجاع المعزز بالمعلومات (RAG)
-            اعتمادًا على بيانات تاريخية موثوقة تمتد لأكثر من 12 سنة.
-          </p>
-          <p class="sub">التقنيات: Python, FastAPI, LLMs, RAG, OCR, Databases</p>
+    <section class="section" id="about">
+      <div class="container split-heading">
+        <div>
+          <p class="section-kicker">نبذة</p>
+          <h2>من احتياج العمل إلى برمجيات موثوقة</h2>
         </div>
+        <p class="section-intro">
+          أعمل بين التنفيذ، والمتطلبات، والبيانات، والجودة. أركّز على فهم طريقة عمل إجراءات النظام، وتحويل النواقص إلى متطلبات تقنية واضحة، والمساهمة في تقديم واجهات وتغييرات قابلة للاختبار والصيانة.
+        </p>
+      </div>
 
-        <div class="card project-card">
-          <h3>Beyond the Stars <span class="year">(2025)</span></h3>
-          <p class="role">مشروع تخرج — معسكر علم البيانات (SDA & Le Wagon)</p>
-          <p>
-            تحليل أكثر من 17000 تقييم سياحي باستخدام (LDA) و(LSTM)، وبناء لوحة تحكم تفاعلية بـ Streamlit لدعم القرارات.
-          </p>
-          <p class="sub">التقنيات: Python, Pandas, Streamlit, LDA, LSTM</p>
-          <a class="btn-project"
-             href="https://beyondthestars-dec2nn2wt34nyh6vbyvfgu.streamlit.app/Recommendations"
-             target="_blank" rel="noopener">
-            عرض المشروع
-          </a>
-        </div>
-
-        <div class="card project-card">
-          <h3>Interior Designers Directory <span class="year">(2023)</span></h3>
-          <p class="role">مشروع تخرج — معسكر تطوير تطبيقات أندرويد</p>
-          <p>تطبيق يجمع مصممي الديكور في منصة واحدة مع استعراض الأعمال ووسائل تواصل مباشرة.</p>
-          <p class="sub">التقنيات: Android Studio, Kotlin, XML, AndroidX</p>
-        </div>
-
-        <div class="card project-card">
-          <h3>Library Management System <span class="year">(2018)</span></h3>
-          <p class="role">مشروع تخرج — بكالوريوس علوم الحاسب</p>
-          <p>نظام مكتبي لإدارة مكتبة جامعة الخرمة مع تصنيف الكتب والحجوزات والتقارير.</p>
-          <p class="sub">التقنيات: Python (PyCharm), PyQt, SQLite, OOP, Multi-user login</p>
-        </div>
-
-        <div class="card project-card">
-          <h3>Siamese Network — Face Matching <span class="year">(2025)</span></h3>
-          <p class="role">مشروع تعلم عميق</p>
-          <p>نموذج Siamese Network لمقارنة صور الوجوه وتحديد التطابق باستخدام embeddings ومسافة وعتبة قرار.</p>
-          <p class="sub">التقنيات: Python, PyTorch, CNN, Siamese Network, Contrastive Loss</p>
-          <a class="btn-project" href="https://drive.google.com/drive/folders/1W1QsiGvdVZqZnWaUbQ-GdZqS5E5WX5OO?usp=drive_link" target="_blank" rel="noopener">عرض المشروع</a>
-        </div>
-
+      <div class="container strength-grid">
+        <article class="strength-card">
+          <span class="card-number">01</span>
+          <h3>أنظمة الأعمال</h3>
+          <p>إجراءات <bdi>ERP</bdi>، وقواعد الأعمال، والصلاحيات، وحالات الطلبات، ومعايير القبول، والتوثيق التقني.</p>
+        </article>
+        <article class="strength-card">
+          <span class="card-number">02</span>
+          <h3>تطوير البرمجيات</h3>
+          <p>واجهات <bdi>React</bdi> و<bdi>TypeScript</bdi>، وربط <bdi>REST APIs</bdi>، والاختبارات الآلية، وطلبات السحب، ومراجعة الكود.</p>
+        </article>
+        <article class="strength-card">
+          <span class="card-number">03</span>
+          <h3>منظور البيانات</h3>
+          <p><bdi>SQL</bdi>، وتصميم قواعد البيانات، وتحليل البيانات، ومعالجة اللغة الطبيعية، ومشاريع الذكاء الاصطناعي.</p>
+        </article>
       </div>
     </section>
 
-    <!-- CERTS -->
-    <section id="certs" class="container">
-      <h2 class="title">الشهادات</h2>
+    <section class="section section-tint" id="experience">
+      <div class="container">
+        <p class="section-kicker">الخبرة المهنية</p>
+        <h2>خبرة عملية تجمع البرمجيات والبيانات</h2>
 
-      <div class="grid cols-3">
-        <div class="card cert">
-          <figure>
-            <img data-base="assets/certs/lewagon" alt="شهادة Le Wagon">
-            <figcaption>علم البيانات — Le Wagon</figcaption>
-            <div class="sub">شهادة احترافية بالتعاون مع الأكاديمية الرقمية — 2025</div>
-          </figure>
-        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <p>2026 – الآن</p>
+              <p>الرياض</p>
+            </div>
+            <div class="timeline-content">
+              <p class="company">MERP</p>
+              <h3>مهندسة برمجيات</h3>
+              <ul>
+                <li>المساهمة في إجراءات المشتريات والمخزون والمرافق والأصول والصيانة داخل نظام <bdi>ERP</bdi>.</li>
+                <li>تطوير وتحسين واجهات باستخدام <bdi>React</bdi> و<bdi>TypeScript</bdi> وربطها بـ<bdi>REST APIs</bdi>.</li>
+                <li>التعامل مع الصلاحيات، وحالات سير العمل، وقواعد الأعمال، والبيانات القادمة من الخادم.</li>
+                <li>تحويل نواقص النظام إلى متطلبات تقنية واختبارات ومعايير قبول وتوثيق واضح.</li>
+                <li>المشاركة في مراجعة طلبات السحب، والوثائق المعمارية، وجاهزية الأنظمة.</li>
+              </ul>
+            </div>
+          </article>
 
-        <div class="card cert">
-          <figure>
-            <img data-base="assets/certs/AI_week" alt="شهادة أسبوع الذكاء الاصطناعي">
-            <figcaption>أسبوع الذكاء الاصطناعي</figcaption>
-            <div class="sub">NetSeed × SDA — 2025</div>
-          </figure>
-        </div>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <p>ديسمبر 2025 – مايو 2026</p>
+              <p>الرياض</p>
+            </div>
+            <div class="timeline-content">
+              <p class="company">شركة مساندة لخدمات الأعمال</p>
+              <h3>مبرمجة قواعد بيانات · برنامج تطوير الخريجين</h3>
+              <ul>
+                <li>العمل باستخدام <bdi>SQL</bdi> وقواعد البيانات العلائقية وبيانات أنظمة <bdi>ERP</bdi> والتكامل.</li>
+                <li>دعم دقة البيانات والتقارير وأتمتة إجراءات الأعمال.</li>
+                <li>التعاون مع الفرق التقنية وبناء خبرة عملية في بيئات أنظمة المؤسسات.</li>
+              </ul>
+            </div>
+          </article>
 
-        <div class="card cert">
-          <figure>
-            <img data-base="assets/certs/SDA" alt="شهادة معسكر علم البيانات والذكاء الاصطناعي">
-            <figcaption>معسكر علم البيانات والذكاء الاصطناعي</figcaption>
-            <div class="sub">SDA × Le Wagon — 2025</div>
-          </figure>
-        </div>
-
-        <div class="card cert">
-          <figure>
-            <img data-base="assets/certs/android_tuwaiq" alt="شهادة معسكر تطوير تطبيقات أندرويد">
-            <figcaption>معسكر تطوير تطبيقات أندرويد</figcaption>
-            <div class="sub">أكاديمية طويق — 2023</div>
-          </figure>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <p>2019 – 2024</p>
+              <p>مشاريع مستقلة</p>
+            </div>
+            <div class="timeline-content">
+              <p class="company">عمل مستقل قائم على المشاريع</p>
+              <h3>مطورة برمجيات</h3>
+              <p>تطوير تطبيقات أندرويد باستخدام <bdi>Kotlin</bdi>، وأنظمة ويب باستخدام <bdi>PHP</bdi> و<bdi>SQL</bdi>، وتطبيقات سطح مكتب باستخدام <bdi>Python</bdi>.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- CV -->
-    <section id="cv" class="container">
-      <h2 class="title">السيرة الذاتية</h2>
-      <div class="btn-row">
-        <a class="btn-download" href="assets/cv/haya_cv.pdf" target="_blank" rel="noopener">عرض السيرة الذاتية (PDF)</a>
-        <a class="btn-download" href="assets/cv/haya_cv.pdf" download>تنزيل السيرة الذاتية (PDF)</a>
-      </div>
-    </section>
+    <section class="section" id="work">
+      <div class="container">
+        <p class="section-kicker">أعمال مختارة</p>
+        <div class="section-heading-row">
+          <h2>مسار مترابط: تطبيقات، وبيانات، وذكاء اصطناعي، وأنظمة أعمال</h2>
+          <p>أعمال مختارة توضح تطور أساساتي التقنية إلى فهم أوسع لأنظمة الأعمال.</p>
+        </div>
 
-    <!-- CONTACT -->
-    <section id="contact" class="container">
-      <h2 class="title">للتواصل</h2>
+        <div class="work-grid">
+          <article class="work-card work-card-featured">
+            <p class="work-type">العمل المهني الحالي</p>
+            <h3>أنظمة <bdi>ERP</bdi> للمؤسسات</h3>
+            <p>المساهمة في إجراءات الأعمال، والواجهات المرتبطة بالـ<bdi>API</bdi>، والصلاحيات، والاختبارات، والمتطلبات، والتوثيق التقني لوحدات <bdi>ERP</bdi>.</p>
+            <ul class="tag-list" aria-label="تقنيات وممارسات عمل أنظمة ERP">
+              <li>React</li><li>TypeScript</li><li>REST APIs</li><li>قواعد الأعمال</li><li>الاختبارات</li>
+            </ul>
+            <p class="privacy-note">يُعرض العمل بمستوى عام لحماية كود الشركة وتفاصيل أنظمتها الخاصة.</p>
+          </article>
 
-      <div class="contact-wrapper">
-        <div class="contact-grid">
-          <div><a href="https://www.linkedin.com/in/haya-ajab/" target="_blank">linkedin.com/in/haya-ajab</a></div>
-          <div><a href="tel:+966546974154">0546974154</a></div>
-          <div><a href="mailto:hayaajab1@gmail.com">hayaajab1@gmail.com</a></div>
-          <div>الرياض، المملكة العربية السعودية</div>
+          <article class="work-card">
+            <p class="work-type">مشروع تخرج جماعي في علم البيانات · 2025</p>
+            <h3>Beyond the Stars</h3>
+            <p>تحليل تفاعلي لـ17,095 مراجعة سياحية في خمس مناطق سعودية، باستخدام معالجة اللغة الطبيعية، وتحليل المشاعر، ونمذجة الموضوعات بـ<bdi>LDA</bdi>.</p>
+            <ul class="tag-list" aria-label="تقنيات مشروع Beyond the Stars">
+              <li>Python</li><li>Pandas</li><li>Streamlit</li><li>NLP</li><li>LDA</li>
+            </ul>
+            <div class="card-actions">
+              <a href="https://github.com/HayaAlsubie/Beyond_the_Stars" target="_blank" rel="noopener">مستودع GitHub</a>
+              <a href="https://beyondthestars-dec2nn2wt34nyh6vbyvfgu.streamlit.app/Recommendations" target="_blank" rel="noopener">لوحة التحليل</a>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <p class="work-type">مشروع تخرج جماعي في الذكاء الاصطناعي · 2025</p>
+            <h3>مُعِد</h3>
+            <p>منصة تعليمية عربية للاستعداد لاختبار القدرات، تجمع بين التوليد المعزز بالاسترجاع وقاعدة منظمة من الأسئلة التاريخية.</p>
+            <ul class="tag-list" aria-label="تقنيات مشروع مُعِد">
+              <li>Python</li><li>FastAPI</li><li>LLMs</li><li>RAG</li><li>OCR</li>
+            </ul>
+            <p class="privacy-note">مشروع جماعي خاص؛ لا يُنشر الكود أو بيانات الأسئلة الأصلية.</p>
+          </article>
+
+          <article class="work-card">
+            <p class="work-type">مشروع تخرج معسكر أندرويد · 2023</p>
+            <h3>دليل المصممين الداخليين</h3>
+            <p>تطبيق جوال لاكتشاف المصممين الداخليين، واستعراض أعمالهم، والتواصل معهم من خلال تطبيق واحد.</p>
+            <ul class="tag-list" aria-label="تقنيات مشروع أندرويد">
+              <li>Kotlin</li><li>Android Studio</li><li>XML</li><li>AndroidX</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
+    <section class="section section-tint" id="education">
+      <div class="container">
+        <p class="section-kicker">التعليم والتدريب المتخصص</p>
+        <h2>الأساس التقني</h2>
+
+        <div class="education-grid">
+          <article>
+            <p class="date">2014 – 2018</p>
+            <h3>بكالوريوس علوم الحاسب</h3>
+            <p>جامعة الطائف · المعدل 3.69 من 4.00 · مع مرتبة الشرف</p>
+          </article>
+          <article>
+            <p class="date">فبراير – مايو 2025</p>
+            <h3>معسكر علم البيانات</h3>
+            <p>الأكاديمية السعودية الرقمية و<bdi>Le Wagon</bdi></p>
+          </article>
+          <article>
+            <p class="date">أكتوبر – ديسمبر 2025</p>
+            <h3>برنامج علم البيانات والذكاء الاصطناعي</h3>
+            <p>أكاديمية طويق · 200 ساعة</p>
+          </article>
+          <article>
+            <p class="date">2023</p>
+            <h3>معسكر تطوير تطبيقات أندرويد</h3>
+            <p>أكاديمية طويق</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <p class="section-kicker">الأدوات التقنية</p>
+        <h2>مهارات منظّمة حسب الاستخدام</h2>
+
+        <div class="skills-grid">
+          <article>
+            <h3>تطوير البرمجيات</h3>
+            <p><bdi>React, TypeScript, JavaScript, HTML, CSS, Python, Kotlin</bdi></p>
+          </article>
+          <article>
+            <h3>أنظمة الأعمال</h3>
+            <p>أنظمة <bdi>ERP</bdi>، وتحليل المتطلبات، وقواعد الأعمال، والصلاحيات المبنية على الأدوار، ومعايير القبول، ومفاهيم <bdi>UAT</bdi>، والتوثيق التقني</p>
+          </article>
+          <article>
+            <h3>الواجهات البرمجية والبيانات</h3>
+            <p><bdi>REST APIs, SQL, Database Design, FastAPI, Pandas, Data Analysis</bdi></p>
+          </article>
+          <article>
+            <h3>الهندسة والتسليم</h3>
+            <p><bdi>Git, GitHub, Pull Requests, Automated Testing, Docker Fundamentals, CI/CD Fundamentals, Cloud Fundamentals</bdi></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section resume-section" id="resume">
+      <div class="container resume-panel">
+        <div>
+          <p class="section-kicker">السيرة الذاتية</p>
+          <h2>ملخص واضح لخبرتي</h2>
+          <p>نسخة <bdi>PDF</bdi> مهيأة للمشاركة ولا تتضمن رقم هاتف منشورًا للعامة.</p>
+        </div>
+        <div class="resume-actions">
+          <a class="button button-primary" href="assets/cv/haya_cv.pdf" target="_blank" rel="noopener">عرض PDF</a>
+          <a class="button button-secondary" href="assets/cv/haya_cv.pdf" download>تنزيل السيرة</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-panel">
+        <p class="section-kicker">التواصل</p>
+        <h2>لنكمل الحديث</h2>
+        <p>إذا التقينا في <bdi>LEAP</bdi>، أو رغبت في مناقشة هندسة البرمجيات أو أنظمة <bdi>ERP</bdi> أو المنتجات المبنية على البيانات، يمكن التواصل معي من خلال الخيارات التالية.</p>
+        <div class="contact-buttons">
+          <a class="button button-primary" href="mailto:hayaajab1@gmail.com">مراسلة هياء</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/haya-ajab/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="button button-secondary" href="https://github.com/HayaAlsubie" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p class="location">الرياض، المملكة العربية السعودية</p>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <small>© <span id="year"></span> هياء عجاب</small>
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>© 2026 هياء عجاب السبيعي</p>
+      <a href="#top">العودة للأعلى</a>
     </div>
   </footer>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <span class="close" id="lbClose">x</span>
-    <img id="lbImg" alt="عرض مكبر">
-  </div>
-
-  <script>
-    // بدء الصفحة من الأعلى عند التحميل
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-    window.addEventListener('load', () => {
-      window.scrollTo(0, 0);
-    });
-
-    // السنة
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // مُحمّل صور ذكي: يجرّب الامتدادات المتاحة تلقائياً
-    document.querySelectorAll('img[data-base]').forEach(img => {
-      const exts = ['.jpg', '.jpeg', '.png', '.webp'];
-      let i = 0;
-
-      const tryNext = () => {
-        if (i >= exts.length) return;
-        const url = img.getAttribute('data-base') + exts[i++];
-        const test = new Image();
-        test.onload = () => { img.src = url; };
-        test.onerror = tryNext;
-        test.src = url;
-      };
-
-      tryNext();
-    });
-
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    const lbClose = document.getElementById('lbClose');
-
-    document.addEventListener('click', (e) => {
-      const img = e.target.closest('img');
-      if (!img) return;
-
-      const isCert = img.closest('.cert') !== null;
-      const isCv = img.classList.contains('cv-img');
-      if (!isCert && !isCv) return;
-
-      const src = img.getAttribute('src');
-      if (!src) return;
-
-      lbImg.src = src;
-      lightbox.classList.add('active');
-    });
-
-    lbClose.addEventListener('click', () => lightbox.classList.remove('active'));
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) lightbox.classList.remove('active');
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') lightbox.classList.remove('active');
-    });
-  </script>
-
-  <!-- 3D Viewer Script -->
-  <script type="module">
-    // 3D Viewer - Load as module
-    (async function init3DViewer() {
-      const viewer = document.getElementById('viewer3d');
-      if (!viewer) return;
-
-      try {
-        const THREE = await import('three');
-        const { FBXLoader } = await import('three/addons/loaders/FBXLoader.js');
-        const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
-
-        // Scene setup
-        const scene = new THREE.Scene();
-        scene.background = null;
-
-        const camera = new THREE.PerspectiveCamera(
-          50,
-          viewer.clientWidth / viewer.clientHeight,
-          0.1,
-          1000
-        );
-        camera.position.set(0, 5, 15);
-
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(viewer.clientWidth, viewer.clientHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        viewer.innerHTML = '';
-        viewer.appendChild(renderer.domElement);
-
-        // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-        scene.add(ambientLight);
-
-        const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
-        directionalLight1.position.set(5, 10, 5);
-        scene.add(directionalLight1);
-
-        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
-        directionalLight2.position.set(-5, 5, -5);
-        scene.add(directionalLight2);
-
-        // Controls
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.minDistance = 5;
-        controls.maxDistance = 30;
-
-        let mixer = null;
-        const clock = new THREE.Clock();
-
-        // Load FBX model
-        const loader = new FBXLoader();
-        loader.load(
-          'assets/3D/Moedanimation.fbx',
-          (fbx) => {
-            // Center and scale the model
-            fbx.traverse((child) => {
-              if (child.isMesh) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-              }
-            });
-
-            // Calculate bounding box to center the model
-            const box = new THREE.Box3().setFromObject(fbx);
-            const center = box.getCenter(new THREE.Vector3());
-            const size = box.getSize(new THREE.Vector3());
-            const maxDim = Math.max(size.x, size.y, size.z);
-            const scale = 5 / maxDim;
-            fbx.scale.multiplyScalar(scale);
-            fbx.position.sub(center.multiplyScalar(scale));
-
-            // Create a group for auto-rotation
-            let modelGroup = new THREE.Group();
-            modelGroup.add(fbx);
-            scene.add(modelGroup);
-            modelGroup.rotation.y = 0;
-
-            // Setup animation mixer if animations exist
-            if (fbx.animations && fbx.animations.length > 0) {
-              mixer = new THREE.AnimationMixer(fbx);
-
-              // Play all animations with loop
-              fbx.animations.forEach((clip) => {
-                const action = mixer.clipAction(clip);
-                action.setLoop(THREE.LoopRepeat); // Repeat animation infinitely
-                action.clampWhenFinished = false; // Don't stop at end
-                action.play();
-              });
-
-              console.log(`Playing ${fbx.animations.length} animation(s)`);
-            } else {
-              console.log('No animations found in model');
-            }
-
-            // Auto-rotate the model (start after the first zoom cycle)
-            let autoRotateSpeed = -0.005;
-            let rotationDelay = 4; // seconds
-            let rotationTimer = 0;
-
-            // Find eyes and add blinking animation
-            let eyes = [];
-            fbx.traverse((child) => {
-              if (child.isMesh) {
-                const name = child.name.toLowerCase();
-                // Search for eyes by name
-                if (name.includes('eye') || name.includes('عين') ||
-                    name.includes('eyeball') || name.includes('pupil')) {
-                  eyes.push(child);
-                }
-                // Also check material name
-                if (child.material && child.material.name) {
-                  const matName = child.material.name.toLowerCase();
-                  if (matName.includes('eye') || matName.includes('عين')) {
-                    if (!eyes.includes(child)) eyes.push(child);
-                  }
-                }
-              }
-            });
-
-            // If no eyes found, try to find small meshes that might be eyes
-            if (eyes.length === 0) {
-              const allMeshes = [];
-              fbx.traverse((child) => {
-                if (child.isMesh) allMeshes.push(child);
-              });
-
-              // Find smallest meshes (likely eyes)
-              allMeshes.sort((a, b) => {
-                const boxA = new THREE.Box3().setFromObject(a);
-                const boxB = new THREE.Box3().setFromObject(b);
-                const sizeA = boxA.getSize(new THREE.Vector3());
-                const sizeB = boxB.getSize(new THREE.Vector3());
-                const volumeA = sizeA.x * sizeA.y * sizeA.z;
-                const volumeB = sizeB.x * sizeB.y * sizeB.z;
-                return volumeA - volumeB;
-              });
-
-              // Take the 2 smallest meshes as potential eyes
-              if (allMeshes.length >= 2) {
-                eyes = allMeshes.slice(0, 2);
-              }
-            }
-
-            console.log(`Found ${eyes.length} eye(s) for blinking animation`);
-
-            // Eye blinking animation
-            let eyeBlinkTime = 0;
-            let eyeBlinkInterval = 2 + Math.random() * 2; // Random interval between 2-4 seconds
-            let isBlinking = false;
-
-            // Auto zoom (camera distance animation)
-            let zoomTime = 0;
-            let baseDistance = 15;
-            let zoomRange = 3; // Zoom in/out range
-            let zoomSpeed = 0.5; // Speed of zoom animation
-
-            // Animation loop
-            const animate = () => {
-              requestAnimationFrame(animate);
-              const delta = clock.getDelta();
-
-              // Update animations if mixer exists
-              if (mixer) {
-                mixer.update(delta);
-              }
-
-              // Auto-rotate the model (after delay)
-              rotationTimer += delta;
-              if (rotationTimer >= rotationDelay) {
-                modelGroup.rotation.y += autoRotateSpeed;
-              }
-
-              // Eye blinking animation
-              eyeBlinkTime += delta;
-              if (eyeBlinkTime >= eyeBlinkInterval) {
-                if (!isBlinking) {
-                  // Start blinking
-                  isBlinking = true;
-                  eyes.forEach(eye => {
-                    if (eye.scale) {
-                      eye.userData.originalScale = eye.scale.y;
-                    }
-                  });
-                } else if (eyeBlinkTime >= eyeBlinkInterval + 0.15) {
-                  // End blinking
-                  isBlinking = false;
-                  eyeBlinkTime = 0;
-                  eyeBlinkInterval = 2 + Math.random() * 2; // New random interval
-                }
-              }
-
-              // Apply eye blink
-              if (isBlinking) {
-                const blinkProgress = Math.min((eyeBlinkTime - eyeBlinkInterval) / 0.15, 1);
-                const blinkScale = blinkProgress < 0.5
-                  ? 1 - (blinkProgress * 2) * 0.9  // Close
-                  : (blinkProgress - 0.5) * 2;      // Open
-
-                eyes.forEach(eye => {
-                  if (eye.scale && eye.userData.originalScale !== undefined) {
-                    eye.scale.y = eye.userData.originalScale * blinkScale;
-                  }
-                });
-              }
-
-              // Auto zoom animation
-              zoomTime += delta * zoomSpeed;
-              const zoomOffset = Math.cos(zoomTime) * zoomRange;
-              const targetDistance = baseDistance + zoomOffset;
-
-              // Smoothly move camera
-              const currentDistance = camera.position.distanceTo(new THREE.Vector3(0, 0, 0));
-              const newDistance = THREE.MathUtils.lerp(currentDistance, targetDistance, 0.05);
-
-              const direction = camera.position.clone().normalize();
-              camera.position.copy(direction.multiplyScalar(newDistance));
-
-              controls.update();
-              renderer.render(scene, camera);
-            };
-            animate();
-
-            // Handle window resize
-            const handleResize = () => {
-              camera.aspect = viewer.clientWidth / viewer.clientHeight;
-              camera.updateProjectionMatrix();
-              renderer.setSize(viewer.clientWidth, viewer.clientHeight);
-            };
-            window.addEventListener('resize', handleResize);
-          },
-          (progress) => {
-            if (progress.lengthComputable) {
-              const percent = (progress.loaded / progress.total * 100).toFixed(0);
-              const loadingEl = viewer.querySelector('.viewer-loading');
-              if (loadingEl) {
-                loadingEl.textContent = `جاري تحميل النموذج... ${percent}%`;
-              }
-            }
-          },
-          (error) => {
-            console.error('Error loading 3D model:', error);
-            viewer.innerHTML = '<div class="viewer-loading">خطأ في تحميل النموذج ثلاثي الأبعاد. يرجى المحاولة مرة أخرى لاحقاً.</div>';
-          }
-        );
-      } catch (error) {
-        console.error('Error initializing 3D viewer:', error);
-        viewer.innerHTML = '<div class="viewer-loading">عارض 3D غير متاح. يرجى التحقق من توافق المتصفح.</div>';
-      }
-    })();
-  </script>
 </body>
 </html>
